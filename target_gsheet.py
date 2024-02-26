@@ -12,6 +12,7 @@ import threading
 import http.client
 import urllib
 import pkg_resources
+import time
 
 from jsonschema import validate
 import singer
@@ -72,6 +73,7 @@ def emit_state(state):
     if state is not None:
         line = json.dumps(state)
         logger.debug('Emitting state {}'.format(line))
+        time.sleep(0.1)
         sys.stdout.write("{}\n".format(line))
         sys.stdout.flush()
         
